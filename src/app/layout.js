@@ -23,6 +23,8 @@ export default function RootLayout({ children }) {
         <title>Baber_shop</title>
       </Head>
       <Navbar />
+      <About />
+      <Welcome />
       {/* <html lang="en">
         <body className={inter.className}>{children}</body>
       </html> */}
