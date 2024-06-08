@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../../styles/Navbar.module.css";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
     return (
