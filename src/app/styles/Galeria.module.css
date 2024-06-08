@@ -1,0 +1,11 @@
+.galeria_container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: bisque;
+    height: 100vh;
+    padding: 100px;
+}
