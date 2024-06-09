@@ -7,7 +7,7 @@ export default function Home() {
     <main className={styles.main}>
       <div>
         <Link href="/pages/about">
-          <h1 className={styles.title}>Sobreeeee</h1>
+          <h1 className={styles.title}>Sobreeeeeee</h1>
 
         </Link>
       </div>
