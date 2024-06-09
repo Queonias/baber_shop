@@ -13,7 +13,7 @@ export default function Navbar() {
                             <Link className={styles.link} href={`/`}>Inicio</Link>
                         </li>
                         <li>
-                            <Link className={styles.link} href={`/about`}>Serviços</Link>
+                            <Link className={styles.link} href={`pages/about`}>Serviços</Link>
                         </li>
                         <li>
                             <Link className={styles.link} href={`/about`}>Galeria</Link>
@@ -25,7 +25,7 @@ export default function Navbar() {
                             <Link className={styles.link} href={`/about`}>Agende seu horário</Link>
                         </li>
                     </ul>
-                    <Link className={styles.btn} href={`/login/Signup`}>
+                    <Link className={styles.btn} href={`pages/login`}>
                         <button className={styles.user_icon_button}>
 
                             <Image className={styles.imagem_user} src={`/images/user.png`} width="75" height="75" />
