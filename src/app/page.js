@@ -14,9 +14,17 @@ export default function Home() {
         <link rel="shortcut icon" href="./images/favicon.ico" />
         <title>Baber_shop</title>
       </Head>
-      <Navbar />
-      <About />
-      <Welcome />
+      <div id="start">
+        <Navbar />
+      </div>
+
+      <div id="services">
+        <About />
+      </div>
+      <div id="schedule">
+        <Welcome />
+      </div>
+
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function Navbar() {
                             <Link className={styles.link} href={`/`}>Inicio</Link>
                         </li>
                         <li>
-                            <Link className={styles.link} href={`pages/about`}>Serviços</Link>
+                            <Link className={styles.link} href={`/#services`}>Serviços</Link>
                         </li>
                         <li>
                             <Link className={styles.link} href={`/about`}>Galeria</Link>
@@ -22,7 +22,7 @@ export default function Navbar() {
                             <Link className={styles.link} href={`/about`}>Localização</Link>
                         </li>
                         <li>
-                            <Link className={styles.link} href={`/about`}>Agende seu horário</Link>
+                            <Link className={styles.link} href={`/#schedule`}>Agende seu horário</Link>
                         </li>
                     </ul>
                     <Link className={styles.btn} href={`pages/login`}>
