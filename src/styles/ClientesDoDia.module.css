@@ -1,11 +1,11 @@
-body {
+.divBody {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
-header {
+.divBody header {
     background-color: black;
     color: white;
     display: flex;
@@ -16,33 +16,33 @@ header {
     flex-wrap: wrap;
 }
 
-header .logo img {
+.divBody header .logo img {
     height: 100px;
     transition: transform 0.3s;
 }
 
-header .logo img:hover {
+.divBody header .logo img:hover {
     transform: scale(1.1);
 }
 
-header nav {
+.divBody header nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-header nav a {
+.divBody header nav a {
     color: white;
     margin: 0 10px;
     font-size: 18px;
     transition: color 0.3s;
 }
 
-header nav a:hover {
+.divBody header nav a:hover {
     color: #757474;
 }
 
-header nav a.active {
+.divBody header nav a.active {
     text-decoration: underline;
     color: #f4f4f4;
 }
