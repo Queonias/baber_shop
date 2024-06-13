@@ -1,11 +1,11 @@
-body {
+.divBody body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
 }
 
-header {
+.divHeader header {
     background-color: black;
     color: white;
     display: flex;
@@ -16,22 +16,22 @@ header {
     flex-wrap: wrap;
 }
 
-header .logo img {
+.divHeader header .logo img {
     height: 100px;
     transition: transform 0.3s;
 }
 
-header .logo img:hover {
+.divHeader header .logo img:hover {
     transform: scale(1.1);
 }
 
-header nav {
+.divHeader header nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-header nav a {
+.divHeader header nav a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
@@ -39,11 +39,11 @@ header nav a {
     transition: color 0.3s;
 }
 
-header nav a:hover {
+.divHeader header nav a:hover {
     color: #ddd;
 }
 
-header nav a.active {
+.divHeader header nav a.active {
     text-decoration: underline;
     color: #f4f4f4;
 }
@@ -97,7 +97,7 @@ header nav a.active {
     display: block;
 }
 
-main {
+.divMain main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -107,7 +107,7 @@ main {
     text-align: center;
 }
 
-h1 {
+.divMain h1 {
     margin-bottom: 20px;
 }
 
@@ -137,18 +137,18 @@ h1 {
     color: #555;
 }
 
-table {
+.divMain table {
     width: 100%;
     border-collapse: collapse;
 }
 
-thead th {
+.divMain thead th {
     font-weight: normal;
     padding: 10px;
     background-color: #f4f4f4;
 }
 
-tbody td {
+.divMain tbody td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
@@ -156,16 +156,16 @@ tbody td {
     transition: background-color 0.3s;
 }
 
-tbody .prev-month,
+.divMain tbody .prev-month,
 tbody .next-month {
     color: #aaa;
 }
 
-tbody .current-month:hover {
+.divMain tbody .current-month:hover {
     background-color: #c7c7c7;
 }
 
-tbody .selected {
+.divMain tbody .selected {
     background-color: black;
     color: white;
 }
@@ -218,11 +218,11 @@ tbody .selected {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    header {
+    .divHeader header {
         padding: 10px 20px;
     }
     
-    header nav a {
+    .divHeader header nav a {
         margin: 0 5px;
         font-size: 16px;
     }
@@ -232,7 +232,7 @@ tbody .selected {
         padding: 8px 10px;
     }
 
-    main {
+    .divMain main {
         margin: 10px;
         padding: 15px;
     }
@@ -252,18 +252,18 @@ tbody .selected {
     }
 }
 
-@media (max-width: 480px) {
-    header {
+ @media (max-width: 480px) {
+    .divHeader {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    header nav {
+    .divHeader header nav {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    header nav a {
+    .divHeader header nav a {
         margin: 5px 0;
     }
 

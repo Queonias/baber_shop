@@ -5,53 +5,58 @@ import styles from '../../../styles/EditarHorarios.module.css'
 
 const EditarHorarios = () => {
     return (
-        <div>
-            <header>
-                <div className={styles.logo}>
-                    <Image className={styles.imagem} src={`/images/logo.png`} width="75" height="75" />
-                </div>
-                <nav>
-                    <a href="/editar-horarios" className={styles.active}>Editar Horários</a>
-                    <a href="/clientes-do-dia">Clientes do dia</a>
-                    <div className={styles.userDropdown}>
-                        <button className={styles.dropbtn}>Davi Nunes</button>
-                        <div className={styles.dropdownContent}>
-                            <a href="#">Profile</a>
-                            <a href="#">Logout</a>
+        <div className={styles.divBody}>
+            <div className='divHeader'>
+                <header>
+                    <div className={styles.logo}>
+                        <Image src="/images/logo.png" alt="Logo" width={280} height={280} />
+                    </div>
+                    <nav>
+                        <a href="/editar-horarios" className={styles.active}>Editar Horários</a>
+                        <a href="/clientes-do-dia">Clientes do dia</a>
+                        <div className={styles.userDropdown}>
+                            <button className={styles.dropbtn}>Davi Nunes</button>
+                            <div className={styles.dropdownContent}>
+                                <a href="#">Profile</a>
+                                <a href="#">Logout</a>
+                            </div>
                         </div>
+                    </nav>
+                </header>
+            </div>
+            <div className={styles.divMain}>
+                <main>
+                    <h1>Data e horário</h1>
+                    <div className={styles.calendar}>
+                        <div className={styles.calendarHeader}>
+                            <button className={styles.navArrow} id="prev-month">&#9664;</button>
+                            <span id="month-year"></span>
+                            <button className={styles.navArrow} id="next-month">&#9654;</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Dom</th>
+                                    <th>Seg</th>
+                                    <th>Ter</th>
+                                    <th>Qua</th>
+                                    <th>Qui</th>
+                                    <th>Sex</th>
+                                    <th>Sab</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-body">
+                                {/* Os dias corridos serão inseridos dinamicamente aqui */}
+                            </tbody>
+                        </table>
                     </div>
-                </nav>
-            </header>
-            <main>
-                <h1>Data e horário</h1>
-                <div className={styles.calendar}>
-                    <div className={styles.calendarHeader}>
-                        <button className={styles.navArrow} id="prev-month">&#9664;</button>
-                        <span id="month-year"></span>
-                        <button className={styles.navArrow} id="next-month">&#9654;</button>
+                    <div id="times-container" className={styles.timesContainer}>
+                        {/* Os intervalos de tempo serão inseridos dinamicamente aqui */}
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Dom</th>
-                                <th>Seg</th>
-                                <th>Ter</th>
-                                <th>Qua</th>
-                                <th>Qui</th>
-                                <th>Sex</th>
-                                <th>Sab</th>
-                            </tr>
-                        </thead>
-                        <tbody id="calendar-body">
-                            {/* Os dias corridos serão inseridos dinamicamente aqui */}
-                        </tbody>
-                    </table>
-                </div>
-                <div id="times-container" className={styles.timesContainer}>
-                    {/* Os intervalos de tempo serão inseridos dinamicamente aqui */}
-                </div>
-                <button id="add-time-btn" className={styles.addTimeBtn}>+</button>
-            </main>
+                    <button id="add-time-btn" className={styles.addTimeBtn}>+</button>
+                </main>
+            </div>
+
         </div>
     );
 }
