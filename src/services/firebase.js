@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
 
 const {
     API_KEY,
@@ -12,21 +12,16 @@ const {
 } = process.env;
 
 const firebaseConfig = {
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    projectId: PROJECT_ID,
-    storageBucket: STORAGE_BUCKET,
-    messagingSenderId: MESSAGING_SENDER_ID,
-    appId: APP_ID,
-    measurementId: MEASUREMENT_ID
+    apiKey: "AIzaSyB6RQwa-DyodeecTkAoD9qnK7W_Z0lG4ek",
+    authDomain: "estudos-1f119.firebaseapp.com",
+    projectId: "estudos-1f119",
+    storageBucket: "estudos-1f119.appspot.com",
+    messagingSenderId: "474062931997",
+    appId: "1:474062931997:web:ec7f5b507283e7059fdef4",
+    measurementId: "G-ZMK545YX72"
 };
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-} else {
-    firebase.app();
-}
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-const database = firebase.database();
-
-export { database, firebase };
+export { database, app };
