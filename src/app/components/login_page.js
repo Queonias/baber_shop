@@ -43,11 +43,25 @@ const Login = () => {
                     <form action="#">
                         <div className={styles.inputGroup}>
                             <label htmlFor="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="E-mail" required />
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="E-mail"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required />
                         </div>
                         <div className={styles.inputGroup}>
                             <label htmlFor="password">Senha</label>
-                            <input type="password" id="password" name="password" placeholder="Senha" required />
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Senha"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required />
                             <span className={styles.showPassword}>&#128065;</span>
                         </div>
                         <div className={styles.extraOptions}>
