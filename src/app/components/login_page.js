@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import styles from '../../styles/Login.module.css'
-import { database } from '@/services/firebase';
+import { database, db } from '@/services/firebase';
 import { ref, set } from 'firebase/database';
-
+import { collection, addDoc } from "firebase/firestore";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,22 +13,20 @@ const Login = () => {
     // const [firstName, setFirstName] = useState('');
     // const [lastName, setLastName] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // ID único para o usuário
-        const userId = Date.now().toString();
-
-        set(ref(database, 'users/' + userId), {
-            firstName: firstName,
-            email: email,
-        }).then(() => {
-            console.log('Dados salvos com sucesso!');
-        }).catch((error) => {
-            console.error('Erro ao salvar dados: ', error);
-        });
+        try {
+            const docRef = await addDoc(collection(db, "users"), {
+                email: email,
+                password: password,
+                born: 1815
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
     };
-
 
     return (
         <div className={styles.containerBody}>
@@ -40,7 +38,7 @@ const Login = () => {
                     <button className={`${styles.tab} ${styles.active}`} id="login-tab">Login</button>
                 </div>
                 <div className={styles.loginForm}>
-                    <form action="#">
+                    <form >
                         <div className={styles.inputGroup}>
                             <label htmlFor="email">E-mail</label>
                             <input
@@ -59,8 +57,8 @@ const Login = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Senha"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required />
                             <span className={styles.showPassword}>&#128065;</span>
                         </div>
@@ -72,10 +70,19 @@ const Login = () => {
                             <a href="#">Esqueceu sua senha?</a>
                         </div>
                         <div className={styles.buttonLogar}>
-                            <button type="submit">Logar</button>
+                            <button
+                                type="button"
+                                onClick={handleSubmit}
+                            >
+                                Logar
+                            </button>
                         </div>
-
                     </form>
+                    <button
+                        onClick={handleSubmit}
+                    >
+                        <a href="#">Criar uma conta</a>
+                    </button>
                 </div>
             </div>
         </div>
