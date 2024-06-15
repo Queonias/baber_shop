@@ -1,4 +1,4 @@
-.divBody body {
+.divBody  {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -17,7 +17,8 @@
 }
 
 .divHeader header .logo img {
-    height: 100px;
+    height: 180px;
+    width: 180px;
     transition: transform 0.3s;
 }
 
@@ -48,55 +49,55 @@
     color: #f4f4f4;
 }
 
-.user-dropdown {
+.userDropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropbtn {
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    background-color: #ffffff; /* Cor de fundo do botão */
+    color: rgb(0, 0, 0); /* Cor do texto */
+    padding: 16px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remover borda */
+    cursor: pointer; /* Cursor de ponteiro */
+    border-radius: 5px; /* Bordas arredondadas */
+    outline: none; /* Remover contorno */
 }
 
-.dropbtn:hover {
-    background-color: #333;
+.dropbtn select {
+    background-color: inherit; /* Herdar cor de fundo */
+    color: inherit; /* Herdar cor do texto */
+    border: none; /* Remover borda */
+    font-size: inherit; /* Herdar tamanho da fonte */
+    padding: 10px 16px; /* Espaçamento interno */
+    cursor: inherit; /* Herdar cursor */
+    outline: none; /* Remover contorno */
+    -webkit-appearance: none; /* Remover aparência padrão do select no Safari */
+    -moz-appearance: none; /* Remover aparência padrão do select no Firefox */
+    appearance: none; /* Remover aparência padrão do select */
+    border-radius: 5px; /* Bordas arredondadas */
 }
 
-.dropdown-content {
-    display: none;
+.dropbtn select::-ms-expand {
+    display: none; /* Remover seta padrão no IE */
+}
+
+.dropbtn option {
+    background-color: white; /* Cor de fundo das opções */
+    color: black; /* Cor do texto das opções */
+}
+
+.dropbtn::after {
+    content: '▼'; /* Adicionar seta para indicar dropdown */
     position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 2px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 15px;
-    overflow: hidden;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Desativar eventos na seta */
+    font-size: 12px;
+    color: inherit; /* Herdar cor */
 }
-
-.dropdown-content a {
-    color: rgb(1, 1, 1);
-    padding: 16px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-.dropdown-content a:hover {
-    background-color: #000000;
-   
-}
-
-.user-dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .divMain main {
     max-width: 800px;
     margin: 20px auto;
@@ -111,21 +112,21 @@
     margin-bottom: 20px;
 }
 
-.calendar {
+.calendar  {
     display: inline-block;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
-.calendar-header {
+.calendarHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.nav-arrow {
+.navArrow  {
     background: none;
     border: none;
     font-size: 24px;
@@ -133,7 +134,7 @@
     transition: color 0.3s;
 }
 
-.nav-arrow:hover {
+.navArrow:hover {
     color: #555;
 }
 
@@ -196,7 +197,7 @@ tbody .next-month {
     cursor: pointer;
 }
 
-.add-time-btn {
+.addTimeBtn button {
     display: block;
     margin: 20px auto;
     padding: 10px;
@@ -211,8 +212,7 @@ tbody .next-month {
     text-align: center;
     transition: background-color 0.3s;
 }
-
-.add-time-btn:hover {
+.addTimeBtn button:hover {
     background-color: #555;
 }
 
