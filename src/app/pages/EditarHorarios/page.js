@@ -72,28 +72,38 @@ const EditarHorarios = () => {
         setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)));
     };
 
+    const handleSelectChange = (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue === 'Profile') {
+            // Redireciona para o perfil
+            window.location.href = '#profile'; // Ajuste o href conforme necessário
+        } else if (selectedValue === 'Logout') {
+            // Executa a ação de logout
+            window.location.href = '#logout'; // Ajuste o href conforme necessário
+        }
+    };
+
     return (
         <div className={styles.divBody}>
-            <div className='divHeader'>
+            <div className={styles.divHeader}>
                 <header>
                     <div className={styles.logo}>
-                        <Image src="/images/logo.png" alt="Logo" width={280} height={280} />
+                        <Image src="/images/logo.png" alt="Logo" width={180} height={180} />
                     </div>
                     <nav>
                         <a href="/editar-horarios" className={styles.active}>Editar Horários</a>
                         <a href="/clientes-do-dia">Clientes do dia</a>
                         <div className={styles.userDropdown}>
-                            <button className={styles.dropbtn}>Davi Nunes</button>
-                            <div className={styles.dropdownContent}>
-                                <a href="#">Profile</a>
-                                <a href="#">Logout</a>
-                            </div>
+                            <select className={styles.dropbtn} onChange={handleSelectChange}>
+                                <option value="Davi Nunes">Davi Nunes</option>
+                                <option value="Logout">Sair</option>
+                            </select>
                         </div>
                     </nav>
                 </header>
             </div>
             <div className={styles.divMain}>
-                <main>
+                <main className={styles.divMain}>
                     <h1>Data e horário</h1>
                     <div className={styles.calendar}>
                         <div className={styles.calendarHeader}>
@@ -131,7 +141,9 @@ const EditarHorarios = () => {
                     <div id="times-container" className={styles.timesContainer}>
                         {/* Os intervalos de tempo serão inseridos dinamicamente aqui */}
                     </div>
-                    <button id="add-time-btn" className={styles.addTimeBtn}>+</button>
+                    <div className={styles.addTimeBtn}>
+                        <button id="add-time-btn">+</button>
+                    </div>
                 </main>
             </div>
         </div>
