@@ -1,48 +1,46 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from '../../styles/Login.module.css'
 import { db, auth } from '@/services/firebase';
 import { ref, set } from 'firebase/database';
 import { collection, addDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
     // const [firstName, setFirstName] = useState('');
     // const [lastName, setLastName] = useState('');
 
-    const LoginComponent = () => {
-        const router = useRouter();
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
+    const login = () => {
+        const auth = getAuth();
+        console.log(`E-mail: ${email},  Password: ${password}`);
 
-        const login = (email, password) => {
-            const auth = getAuth();
-
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed in 
-                    const user = userCredential.user;
-                    console.log("User signed in successfully:", user);
-                    // Redireciona para a página desejada após o login
-                    router.push('/dashboard'); // Substitua '/dashboard' pelo caminho da página desejada
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error("Error signing in:", errorCode, errorMessage);
-                    // Você pode adicionar lógica para lidar com erros, como mostrar uma mensagem de erro no UI
-                });
-        }
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log("User signed in successfully:", user);
+                // Redireciona para a página desejada após o login
+                router.push('/pages/dashboard'); // Substitua '/dashboard' pelo caminho da página desejada
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Error signing in:", errorCode, errorMessage);
+                // Você pode adicionar lógica para lidar com erros, como mostrar uma mensagem de erro no UI
+            });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         login(email, password);
     }
+
 
     function createAccount() {
         const auth = getAuth();
@@ -107,7 +105,7 @@ const Login = () => {
                         <div className={styles.buttonLogar}>
                             <button
                                 type="button"
-                                onClick={createAccount}
+                                onClick={handleSubmit}
                             >
                                 Logar
                             </button>
