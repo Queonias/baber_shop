@@ -90,8 +90,8 @@ const EditarHorarios = () => {
                     <div className={styles.logo}>
                         <Image src="/images/logo.png" alt="Logo" width={180} height={180} />
                     </div>
-                    <nav>
-                        <a href="/editar-horarios" className={styles.active}>Editar Horários</a>
+                    <nav className={styles.active}>
+                        <a href="/editar-horarios">Home</a>
                         <a href="/clientes-do-dia">Clientes do dia</a>
                         <div className={styles.userDropdown}>
                             <select className={styles.dropbtn} onChange={handleSelectChange}>

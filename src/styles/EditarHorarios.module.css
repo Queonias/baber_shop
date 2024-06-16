@@ -1,4 +1,4 @@
-.divBody  {
+.divBody {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -45,7 +45,6 @@
 }
 
 .divHeader header nav a.active {
-    text-decoration: underline;
     color: #f4f4f4;
 }
 
@@ -55,49 +54,75 @@
 }
 
 .dropbtn {
-    background-color: #ffffff; /* Cor de fundo do botão */
-    color: rgb(0, 0, 0); /* Cor do texto */
-    padding: 16px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    border: none; /* Remover borda */
-    cursor: pointer; /* Cursor de ponteiro */
-    border-radius: 5px; /* Bordas arredondadas */
-    outline: none; /* Remover contorno */
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 16px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    border: none;
+    /* Remover borda */
+    cursor: pointer;
+    /* Cursor de ponteiro */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    outline: none;
+    /* Remover contorno */
 }
 
 .dropbtn select {
-    background-color: inherit; /* Herdar cor de fundo */
-    color: inherit; /* Herdar cor do texto */
-    border: none; /* Remover borda */
-    font-size: inherit; /* Herdar tamanho da fonte */
-    padding: 10px 16px; /* Espaçamento interno */
-    cursor: inherit; /* Herdar cursor */
-    outline: none; /* Remover contorno */
-    -webkit-appearance: none; /* Remover aparência padrão do select no Safari */
-    -moz-appearance: none; /* Remover aparência padrão do select no Firefox */
-    appearance: none; /* Remover aparência padrão do select */
-    border-radius: 5px; /* Bordas arredondadas */
+    background-color: inherit;
+    /* Herdar cor de fundo */
+    color: inherit;
+    /* Herdar cor do texto */
+    border: none;
+    /* Remover borda */
+    font-size: inherit;
+    /* Herdar tamanho da fonte */
+    padding: 10px 16px;
+    /* Espaçamento interno */
+    cursor: inherit;
+    /* Herdar cursor */
+    outline: none;
+    /* Remover contorno */
+    -webkit-appearance: none;
+    /* Remover aparência padrão do select no Safari */
+    -moz-appearance: none;
+    /* Remover aparência padrão do select no Firefox */
+    appearance: none;
+    /* Remover aparência padrão do select */
+    border-radius: 5px;
+    /* Bordas arredondadas */
 }
 
 .dropbtn select::-ms-expand {
-    display: none; /* Remover seta padrão no IE */
+    display: none;
+    /* Remover seta padrão no IE */
 }
 
 .dropbtn option {
-    background-color: white; /* Cor de fundo das opções */
-    color: black; /* Cor do texto das opções */
+    background-color: white;
+    /* Cor de fundo das opções */
+    color: black;
+    /* Cor do texto das opções */
 }
 
 .dropbtn::after {
-    content: '▼'; /* Adicionar seta para indicar dropdown */
+    content: '▼';
+    /* Adicionar seta para indicar dropdown */
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Desativar eventos na seta */
+    pointer-events: none;
+    /* Desativar eventos na seta */
     font-size: 12px;
-    color: inherit; /* Herdar cor */
+    color: inherit;
+    /* Herdar cor */
 }
+
 .divMain main {
     max-width: 800px;
     margin: 20px auto;
@@ -112,7 +137,7 @@
     margin-bottom: 20px;
 }
 
-.calendar  {
+.calendar {
     display: inline-block;
     width: 100%;
     max-width: 600px;
@@ -126,7 +151,7 @@
     margin-bottom: 10px;
 }
 
-.navArrow  {
+.navArrow {
     background: none;
     border: none;
     font-size: 24px;
@@ -212,6 +237,7 @@ tbody .next-month {
     text-align: center;
     transition: background-color 0.3s;
 }
+
 .addTimeBtn button:hover {
     background-color: #555;
 }
@@ -221,7 +247,7 @@ tbody .next-month {
     .divHeader header {
         padding: 10px 20px;
     }
-    
+
     .divHeader header nav a {
         margin: 0 5px;
         font-size: 16px;
@@ -252,7 +278,7 @@ tbody .next-month {
     }
 }
 
- @media (max-width: 480px) {
+@media (max-width: 480px) {
     .divHeader {
         flex-direction: column;
         align-items: flex-start;
