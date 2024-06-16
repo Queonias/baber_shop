@@ -2,10 +2,10 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
 }
 
-.divBody header {
+.divHeader header {
     background-color: black;
     color: white;
     display: flex;
@@ -16,87 +16,114 @@
     flex-wrap: wrap;
 }
 
-.divBody header .logo img {
-    height: 100px;
+.divHeader header .logo img {
+    height: 180px;
+    width: 180px;
     transition: transform 0.3s;
 }
 
-.divBody header .logo img:hover {
+.divHeader header .logo img:hover {
     transform: scale(1.1);
 }
 
-.divBody header nav {
+.divHeader header nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.divBody header nav a {
+.divHeader header nav a {
     color: white;
+    text-decoration: none;
     margin: 0 10px;
     font-size: 18px;
     transition: color 0.3s;
 }
 
-.divBody header nav a:hover {
-    color: #757474;
+.divHeader header nav a:hover {
+    color: #ddd;
 }
 
-.divBody header nav a.active {
-    text-decoration: underline;
+.divHeader header nav a.active {
     color: #f4f4f4;
 }
 
-.user-dropdown {
+.userDropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropbtn {
-    background-color: black;
-    color: white;
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 16px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
     border: none;
+    /* Remover borda */
     cursor: pointer;
-    font-size: 18px;
-    padding: 10px 15px;
+    /* Cursor de ponteiro */
     border-radius: 5px;
-    transition: background-color 0.3s;
+    /* Bordas arredondadas */
+    outline: none;
+    /* Remover contorno */
 }
 
-.dropbtn:hover {
-    background-color: #333;
+.dropbtn select {
+    background-color: inherit;
+    /* Herdar cor de fundo */
+    color: inherit;
+    /* Herdar cor do texto */
+    border: none;
+    /* Remover borda */
+    font-size: inherit;
+    /* Herdar tamanho da fonte */
+    padding: 10px 16px;
+    /* Espaçamento interno */
+    cursor: inherit;
+    /* Herdar cursor */
+    outline: none;
+    /* Remover contorno */
+    -webkit-appearance: none;
+    /* Remover aparência padrão do select no Safari */
+    -moz-appearance: none;
+    /* Remover aparência padrão do select no Firefox */
+    appearance: none;
+    /* Remover aparência padrão do select */
+    border-radius: 5px;
+    /* Bordas arredondadas */
 }
 
-.dropdown-content {
+.dropbtn select::-ms-expand {
     display: none;
-    position: absolute;
-    right: 0;
+    /* Remover seta padrão no IE */
+}
+
+.dropbtn option {
     background-color: white;
-    min-width: 200px;
-    box-shadow: 2px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 15px;
-    overflow: hidden;
+    /* Cor de fundo das opções */
+    color: black;
+    /* Cor do texto das opções */
 }
 
-.dropdown-content a {
-    color: rgb(1, 1, 1);
-    padding: 16px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
+.dropbtn::after {
+    content: '▼';
+    /* Adicionar seta para indicar dropdown */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Desativar eventos na seta */
+    font-size: 12px;
+    color: inherit;
+    /* Herdar cor */
 }
 
-.dropdown-content a:hover {
-    background-color: #000000;
-   
-}
-
-.user-dropdown:hover .dropdown-content {
-    display: block;
-}
-
-main {
+.divMain main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -106,7 +133,7 @@ main {
     text-align: center;
 }
 
-h1 {
+.divMain h1 {
     margin-bottom: 20px;
 }
 
@@ -117,14 +144,14 @@ h1 {
     margin: 0 auto;
 }
 
-.calendar-header {
+.calendarHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.nav-arrow {
+.navArrow {
     background: none;
     border: none;
     font-size: 24px;
@@ -132,22 +159,22 @@ h1 {
     transition: color 0.3s;
 }
 
-.nav-arrow:hover {
+.navArrow:hover {
     color: #555;
 }
 
-table {
+.divMain table {
     width: 100%;
     border-collapse: collapse;
 }
 
-thead th {
+.divMain thead th {
     font-weight: normal;
     padding: 10px;
     background-color: #f4f4f4;
 }
 
-tbody td {
+.divMain tbody td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
@@ -155,16 +182,16 @@ tbody td {
     transition: background-color 0.3s;
 }
 
-tbody .prev-month,
+.divMain tbody .prev-month,
 tbody .next-month {
     color: #aaa;
 }
 
-tbody .current-month:hover {
+.divMain tbody .current-month:hover {
     background-color: #c7c7c7;
 }
 
-tbody .selected {
+.divMain tbody .selected {
     background-color: black;
     color: white;
 }
@@ -195,43 +222,19 @@ tbody .selected {
     cursor: pointer;
 }
 
-.add-time-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    border: none;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-.add-time-btn:hover {
-    background-color: #555;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
-    header {
+    .divHeader header {
         padding: 10px 20px;
     }
-    
-    header nav a {
+
+    .divHeader header nav a {
         margin: 0 5px;
         font-size: 16px;
     }
 
-    .dropbtn {
-        font-size: 16px;
-        padding: 8px 10px;
-    }
 
-    main {
+    .divMain main {
         margin: 10px;
         padding: 15px;
     }
@@ -252,29 +255,17 @@ tbody .selected {
 }
 
 @media (max-width: 480px) {
-    header {
+    .divHeader {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    header nav {
+    .divHeader header nav {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    header nav a {
+    .divHeader header nav a {
         margin: 5px 0;
-    }
-
-    .dropbtn {
-        padding: 8px;
-        width: 100%;
-        text-align: left;
-    }
-
-    .dropdown-content {
-        right: auto;
-        left: 0;
-        width: 100%;
     }
 }
