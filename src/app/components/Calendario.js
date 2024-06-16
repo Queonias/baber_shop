@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import styles from '../../../styles/EditarHorarios.module.css';
+import styles from '../../styles/Calendario.module.css';
 
 const monthNames = [
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -85,23 +85,7 @@ const Calendario = () => {
 
     return (
         <div className={styles.divBody}>
-            <div className={styles.divHeader}>
-                <header>
-                    <div className={styles.logo}>
-                        <Image src="/images/logo.png" alt="Logo" width={180} height={180} />
-                    </div>
-                    <nav>
-                        <a href="/editar-horarios" className={styles.active}>Editar Horários</a>
-                        <a href="/clientes-do-dia">Clientes do dia</a>
-                        <div className={styles.userDropdown}>
-                            <select className={styles.dropbtn} onChange={handleSelectChange}>
-                                <option value="Davi Nunes">Davi Nunes</option>
-                                <option value="Logout">Sair</option>
-                            </select>
-                        </div>
-                    </nav>
-                </header>
-            </div>
+
             <div className={styles.divMain}>
                 <main className={styles.divMain}>
                     <h1>Data e horário</h1>

@@ -26,7 +26,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log("User signed in successfully:", user);
                 // Redireciona para a página desejada após o login
-                router.push('/pages/dashboard'); // Substitua '/dashboard' pelo caminho da página desejada
+                router.push('/pages/ClientesDoDia');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -111,11 +111,11 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
-                    <button
+                    {/* <button
                         onClick={createAccount}
                     >
                         <a href="#">Criar uma conta</a>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

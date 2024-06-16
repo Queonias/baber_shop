@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import styles from '../../../styles/ClientesDoDia.module.css';
+import { useRouter } from 'next/navigation';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../../../services/firebase';
 
 const monthNames = [
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -10,14 +13,12 @@ const monthNames = [
 ];
 
 const EditarHorarios = () => {
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedDay, setSelectedDay] = useState(null);
     const [calendarDays, setCalendarDays] = useState([]);
-
-    useEffect(() => {
-        renderCalendar(currentDate);
-    }, [currentDate]);
 
     const renderCalendar = (date) => {
         const month = date.getMonth();
@@ -58,6 +59,31 @@ const EditarHorarios = () => {
         }
         setCalendarDays(days);
     };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                setLoading(false);
+            } else {
+                // User is signed out, redirect to login
+                router.push('pages/login');
+            }
+        });
+
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, [router]);
+
+    useEffect(() => {
+        renderCalendar(currentDate);
+    }, [currentDate]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+
 
     const handleDayClick = (day, month, year) => {
         setSelectedDate(new Date(year, month, day));

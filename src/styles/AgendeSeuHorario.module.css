@@ -1,0 +1,398 @@
+.main {
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 1em 1.2em;
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    height: 10vh;
+    border-radius: 10px;
+    /* Adicione o raio desejado, por exemplo, 10px */
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    text-align: start;
+    /* background-color: #b19e9e; */
+    height: 100px;
+    padding: 20px;
+    width: 500px;
+}
+
+.inputNome {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    /* Garante que o padding não aumente a largura total */
+}
+
+.inputDate {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.radioGroup {
+    display: flex;
+    flex-direction: row;
+}
+
+.radioInput {
+    margin-right: 5px;
+    margin-left: 20px;
+    /* Espaçamento entre os botões */
+}
+
+.FirthRadioInput {
+    margin-right: 5px;
+    /* margin-left: 20px; */
+    /* Espaçamento entre os botões */
+}
+
+.radioLabel {
+    font-size: 16px;
+    margin-bottom: 5px;
+    /* Espaçamento entre as labels */
+}
+
+
+.inputContainer {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputTelefone {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dropbtn {
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 16px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    border: none;
+    /* Remover borda */
+    cursor: pointer;
+    /* Cursor de ponteiro */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    outline: none;
+    /* Remover contorno */
+}
+
+.dropbtn select {
+    background-color: inherit;
+    /* Herdar cor de fundo */
+    color: inherit;
+    /* Herdar cor do texto */
+    border: none;
+    /* Remover borda */
+    font-size: inherit;
+    /* Herdar tamanho da fonte */
+    padding: 10px 16px;
+    /* Espaçamento interno */
+    cursor: inherit;
+    /* Herdar cursor */
+    outline: none;
+    /* Remover contorno */
+    -webkit-appearance: none;
+    /* Remover aparência padrão do select no Safari */
+    -moz-appearance: none;
+    /* Remover aparência padrão do select no Firefox */
+    appearance: none;
+    /* Remover aparência padrão do select */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+}
+
+.dropbtn select::-ms-expand {
+    display: none;
+    /* Remover seta padrão no IE */
+}
+
+.dropbtn option {
+    background-color: white;
+    /* Cor de fundo das opções */
+    color: black;
+    /* Cor do texto das opções */
+}
+
+.dropbtn::after {
+    content: '▼';
+    /* Adicionar seta para indicar dropdown */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Desativar eventos na seta */
+    font-size: 12px;
+    color: inherit;
+    /* Herdar cor */
+}
+
+
+
+.navbar_container {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 80vw;
+}
+
+
+
+.imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.logo h1 {
+    margin-left: .5em;
+}
+
+.link_items {
+    display: flex;
+    list-style: none;
+}
+
+.link_items li {
+    margin-right: 1.3em;
+}
+
+
+
+.link {
+    color: #FFF;
+    text-decoration: none;
+    padding: 5px;
+    transition: .4s;
+    border-bottom: 2px solid transparent;
+}
+
+.link:hover {
+    border-color: #fff;
+}
+
+.inf {
+    display: flex;
+    /* height: 50vh; */
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.left_container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
+.imagem_container_2 {
+    background-image: url('/images/barbeiro_3.png');
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    border-radius: 5px;
+}
+
+.imagem_container_1 {
+    background-image: url('/images/barbeiro_2.png');
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    border-radius: 5px;
+}
+
+.horarios_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: justify;
+    flex: 2.5;
+    margin-left: 20px;
+    font-size: 15px;
+    /* background-color: rosybrown; */
+}
+
+.horarios_container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.horarios_container table {
+    width: 100%;
+}
+
+.horarios_container table td {
+    color: black;
+    padding: 5px;
+    text-align: start;
+    margin-top: 5px;
+}
+
+.welcome {
+    display: flex;
+    flex: 2.5;
+    flex-direction: column;
+    margin-right: 20px;
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.welcome h2 {
+    font-size: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.welcome button {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: auto;
+    font-size: 15px;
+}
+
+.welcome button:hover,
+.welcome button:focus {
+    outline: none;
+    /* Remove a borda padrão de foco */
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+    /* Adiciona uma sombra ao botão quando estiver com foco */
+    /* font-size: 16px; */
+}
+
+.welcome hr {
+    margin-top: 0;
+    width: 100px;
+    /* margin: 0 auto 20px; */
+    /* Define margem superior e inferior como 0 e margem automática para os lados esquerdo e direito para centralizar */
+    border: 0;
+    border-top: 3px solid #000000;
+}
+
+.titulo {
+    margin: auto;
+}
+
+.titulo_2 {
+    /* margin: auto; */
+    /* background-color: blue; */
+    align-self: flex-start;
+}
+
+.titulo_2 hr {
+    margin-top: 0;
+    width: 100px;
+    /* margin: 0 auto 20px; */
+    /* Define margem superior e inferior como 0 e margem automática para os lados esquerdo e direito para centralizar */
+    border: 0;
+    border-top: 3px solid #000000;
+}
+
+.buttonEnviar {
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 16px;
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    border: none;
+    /* Remover borda */
+    cursor: pointer;
+    /* Cursor de ponteiro */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    outline: none;
+    /* Remover contorno */
+}
+
+.buttonEnviar:hover {
+    background-color: #5c5c5c;
+    /* Cor de fundo do botão ao passar o mouse */
+}
+
+.containerButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.formSalve {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

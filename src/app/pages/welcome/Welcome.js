@@ -1,8 +1,12 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../../styles/Welcom.module.css";
+import { useRouter } from 'next/navigation';
+
 
 export default function Navbar() {
+    const router = useRouter();
     return (
         <div className={styles.welcome_container}>
             <div>
@@ -20,7 +24,12 @@ export default function Navbar() {
                         <p>A minha barbearia, não é apenas um corte, é uma experiência. Com estilo moderno e técnicas precisas, transformo seu visual em uma obra de arte. Venha descobrir o poder de um corte de cabelo feito por quem entende do assunto. Estou aqui para elevar seu estilo e sua confiança. Vamos nessa?</p>
                     </div>
                     <div className={styles.button_container}>
-                        <button>Agende seu horário</button>
+                        <button
+                            onClick={() => router.push('/pages/AgendeSeuHorario')}
+                            className={styles.button}
+                        >
+                            Agende seu horário
+                        </button>
                     </div>
                 </div>
                 <div className={styles.image_container}>
