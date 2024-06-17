@@ -5,6 +5,8 @@ import styles from '../../../styles/AgendeSeuHorario.module.css';
 import Link from "next/link";
 import Image from "next/image";
 import InputMask from 'react-input-mask';
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../../services/firebase';
 
 const AgendeSeuHorario = () => {
     const [nomeCompleto, setNomeCompleto] = useState('');
@@ -15,6 +17,21 @@ const AgendeSeuHorario = () => {
     const [formSalve, setFormSalve] = useState(false);
 
     const [errors, setErrors] = useState({});
+
+    const salveData = async (data) => {
+        try {
+            const docRef = await addDoc(collection(db, "agendamentos"), {
+                nomeCompleto: data.nomeCompleto,
+                dataAgendamento: data.dataAgendamento,
+                horarioAgendamento: data.horarioAgendamento,
+                servico: data.servico,
+                telefone: data.telefone,
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ",)
+        }
+    }
 
     const handleSelectChange = (event) => {
         setServico(event.target.value);
@@ -49,7 +66,7 @@ const AgendeSeuHorario = () => {
             setFormSalve(false);
         } else {
             // Aqui você pode adicionar a lógica para enviar os dados
-            console.log({
+            salveData({
                 nomeCompleto,
                 dataAgendamento,
                 horarioAgendamento,

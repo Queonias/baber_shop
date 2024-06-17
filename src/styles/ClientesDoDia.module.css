@@ -196,6 +196,11 @@ tbody .next-month {
     color: white;
 }
 
+.hasClients {
+    background-color: #f4f4f4;
+    color: black;
+}
+
 .times-container {
     display: flex;
     flex-wrap: wrap;

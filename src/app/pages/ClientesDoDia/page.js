@@ -5,7 +5,9 @@ import Image from "next/image";
 import styles from '../../../styles/ClientesDoDia.module.css';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '../../../services/firebase';
+import { auth, db } from '../../../services/firebase';
+import { collection, getDocs } from "firebase/firestore";
+import Card from '../../components/card';
 
 const monthNames = [
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -19,6 +21,8 @@ const EditarHorarios = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedDay, setSelectedDay] = useState(null);
     const [calendarDays, setCalendarDays] = useState([]);
+    const [clientesDoDia, setClientesDoDia] = useState([]);
+    const [dayClients, setDayClients] = useState([]);
 
     const renderCalendar = (date) => {
         const month = date.getMonth();
@@ -60,6 +64,29 @@ const EditarHorarios = () => {
         setCalendarDays(days);
     };
 
+    const getAllDocuments = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "agendamentos"));
+            const documents = [];
+            querySnapshot.forEach((doc) => {
+                documents.push({ id: doc.id, ...doc.data() });
+            });
+            return documents;
+        } catch (error) {
+            console.error("Error getting documents: ", error);
+            throw error;
+        }
+    };
+
+    useEffect(() => {
+        if (clientesDoDia.length > 0) {
+            const days = clientesDoDia[0].filter(cliente => cliente.data.getDate() === selectedDay);
+            setDayClients(days);
+        }
+        // console.log(clientesDoDia[0].map((days) => days.data.getMonth));
+        console.log(clientesDoDia[0]);
+    }, [selectedDay]);
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -77,6 +104,23 @@ const EditarHorarios = () => {
 
     useEffect(() => {
         renderCalendar(currentDate);
+        const clientes = [];
+        getAllDocuments().then(docs => {
+            docs = docs.map(doc => {
+                const dataAgendamento = doc.dataAgendamento;
+                const date = new Date(dataAgendamento);
+                return {
+                    ...doc,
+                    data: date,
+                    mes: date.getMonth() + 1
+                };
+
+            });
+            clientes.push(docs);
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
+        setClientesDoDia(clientes);
     }, [currentDate]);
 
     if (loading) {
@@ -157,6 +201,10 @@ const EditarHorarios = () => {
                                                 className={styles[day.type] + (day.isSelected ? ` ${styles.selected}` : '')}
                                                 onClick={() => day.type === 'current-month' && handleDayClick(day.day, currentDate.getMonth(), currentDate.getFullYear())}>
                                                 {day.day}
+                                                {/* {console.log(clientesDoDia.filter(days => days.data.getDate() === day.day))} */}
+                                                {/* {clientesDoDia[0].some((days) => days.data.getDate() === day.day)} */}
+                                                {/* {console.log(clientesDoDia[0].map((days) => days.data.getMonth))} */}
+                                                {/* {+ ((clientesDoDia[0].some((days) => days.data.getDate() === day.day)) ? ` ${styles.hasClients}` : '')} */}
                                             </td>
                                         ))}
                                     </tr>
@@ -166,6 +214,12 @@ const EditarHorarios = () => {
                     </div>
 
                 </main>
+                <div>
+                    <h2>Clientes do dia {selectedDay}</h2>
+                    {dayClients.map((cliente, index) => (
+                        <Card key={index} client={cliente} />
+                    ))}
+                </div>
             </div>
         </div>
     );
