@@ -22,7 +22,7 @@ export default function About() {
                 </div>
                 <div className={styles.services}>
                     <Image className={styles.imagem} src={`/images/completo.png`} width="400" height="400" />
-                    <p>Experimente o nosso pacote completo , onde você pode desfrutar de cortes de cabelo, tratamentos de barba e contornos de sobrancelha, tudo em um só lugar.</p>
+                    <p>Experimente o nosso pacote completo, onde você pode desfrutar de cortes de cabelo, tratamentos de barba e contornos de sobrancelha, tudo em um só lugar.</p>
                 </div>
                 <div className={styles.services}>
                     <Image className={styles.imagem} src={`/images/domiciliar.png`} width="400" height="400" />
