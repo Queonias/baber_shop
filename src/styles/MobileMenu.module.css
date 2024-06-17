@@ -1,0 +1,52 @@
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobileMenu.open {
+    display: flex;
+    transform: translateX(0);
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.linkItems {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.linkItems li {
+    margin: 1.5em 0;
+}
+
+.link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #FFD700;
+}

@@ -1,8 +1,18 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import MenuIcon from '@mui/icons-material/Menu';
 import styles from "../../../styles/Navbar.module.css";
+import MobileMenu from "../../components/MobileMenu";
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <>
             <nav className={styles.navbar}>
@@ -25,14 +35,12 @@ export default function Navbar() {
                             <Link className={styles.link} href={`/#schedule`}>Agende seu horário</Link>
                         </li>
                     </ul>
-                    <Link className={styles.btn} href={`pages/login`}>
-                        <button className={styles.user_icon_button}>
-
-                            <Image className={styles.imagem_user} src={`/images/user.png`} width="75" height="75" />
-                        </button>
-                    </Link>
+                    <button className={styles.menuButton} onClick={toggleMenu}>
+                        <MenuIcon />
+                    </button>
                 </div>
             </nav>
+            <MobileMenu isOpen={menuOpen} toggleMenu={toggleMenu} />
             <div className={styles.inf}>
                 <div className={styles.left_container}>
                     <div className={styles.welcome}>
@@ -40,7 +48,6 @@ export default function Navbar() {
                             <h2>DN BARBER SHOP</h2>
                             <hr />
                         </div>
-
                         <p>Seja bem-vindo à DN Barber Shop, onde a tradição encontra a modernidade para criar uma experiência única em cuidados masculinos. Localizada no coração da cidade, somos mais do que uma barbearia comum; somos o seu destino definitivo para o estilo e bem-estar.</p>
                         <button>Agende seu horário</button>
                     </div>
@@ -89,5 +96,5 @@ export default function Navbar() {
                 </div>
             </div>
         </>
-    )
+    );
 }
