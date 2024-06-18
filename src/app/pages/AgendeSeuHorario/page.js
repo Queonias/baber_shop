@@ -7,6 +7,8 @@ import Image from "next/image";
 import InputMask from 'react-input-mask';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../../services/firebase';
+import MenuIcon from '@mui/icons-material/Menu';
+import MobileMenu from "../../components/MobileMenu";
 
 const AgendeSeuHorario = () => {
     const [nomeCompleto, setNomeCompleto] = useState('');
@@ -15,8 +17,13 @@ const AgendeSeuHorario = () => {
     const [servico, setServico] = useState('');
     const [telefone, setTelefone] = useState('');
     const [formSalve, setFormSalve] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const [errors, setErrors] = useState({});
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     const salveData = async (data) => {
         try {
@@ -104,8 +111,12 @@ const AgendeSeuHorario = () => {
                                 <Link className={styles.link} href={`/about`}>Localização</Link>
                             </li>
                         </ul>
+                        <button className={styles.menuButton} onClick={toggleMenu}>
+                            <MenuIcon />
+                        </button>
                     </div>
                 </nav>
+                <MobileMenu isOpen={menuOpen} toggleMenu={toggleMenu} />
                 <div className={styles.container}>
                     <div className={styles.title}>
                         <p>Agende Seu Horário</p>
@@ -136,8 +147,13 @@ const AgendeSeuHorario = () => {
                             <Link className={styles.link} href={`/about`}>Localização</Link>
                         </li>
                     </ul>
+                    <button className={styles.menuButton} onClick={toggleMenu}>
+                        <MenuIcon />
+                    </button>
+
                 </div>
             </nav>
+            <MobileMenu isOpen={menuOpen} toggleMenu={toggleMenu} />
             <div className={styles.container}>
                 <div className={styles.title}>
                     <p>Agende Seu Horário</p>
@@ -145,110 +161,120 @@ const AgendeSeuHorario = () => {
                 <div className={styles.inf}>
                     <div className={styles.left_container}>
                         <div className={styles.welcome}>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className={styles.form}>
                                 <div className={styles.inputContainer}>
-                                    <label htmlFor="nomeCompleto" className={styles.label}>Nome completo</label>
-                                    <input
-                                        type="text"
-                                        id="nomeCompleto"
-                                        name="nomeCompleto"
-                                        value={nomeCompleto}
-                                        onChange={(e) => setNomeCompleto(e.target.value)}
-                                        className={styles.dropbtn}
-                                    />
-                                    {errors.nomeCompleto && <span className={styles.error}>{errors.nomeCompleto}</span>}
-                                </div>
-
-                                <div className={styles.inputContainer}>
-                                    <label htmlFor="dataAgendamento" className={styles.label}>Data de agendamento:</label>
-                                    <input
-                                        type="date"
-                                        id="dataAgendamento"
-                                        name="dataAgendamento"
-                                        value={dataAgendamento}
-                                        onChange={(e) => setDataAgendamento(e.target.value)}
-                                        className={styles.dropbtn}
-                                    />
-                                    {errors.dataAgendamento && <span className={styles.error}>{errors.dataAgendamento}</span>}
-                                </div>
-
-                                <div className={styles.inputContainer}>
-                                    <label className={styles.label}>Escolha o horário:</label>
-                                    <div className={styles.radioGroup}>
+                                    <div className={styles.container_conteudo}>
+                                        <label htmlFor="nomeCompleto" className={styles.label}>Nome completo</label>
                                         <input
-                                            type="radio"
-                                            id="hora0900"
-                                            name="horarioAgendamento"
-                                            value="09:00"
-                                            checked={horarioAgendamento === '09:00'}
-                                            onChange={(e) => setHorarioAgendamento(e.target.value)}
-                                            className={styles.radioInput}
+                                            type="text"
+                                            id="nomeCompleto"
+                                            name="nomeCompleto"
+                                            value={nomeCompleto}
+                                            onChange={(e) => setNomeCompleto(e.target.value)}
+                                            className={styles.dropbtn}
                                         />
-                                        <label htmlFor="hora0900" className={styles.radioLabel}>09:00</label>
-
-                                        <input
-                                            type="radio"
-                                            id="hora1100"
-                                            name="horarioAgendamento"
-                                            value="11:00"
-                                            checked={horarioAgendamento === '11:00'}
-                                            onChange={(e) => setHorarioAgendamento(e.target.value)}
-                                            className={styles.radioInput}
-                                        />
-                                        <label htmlFor="hora1100" className={styles.radioLabel}>11:00</label>
-
-                                        <input
-                                            type="radio"
-                                            id="hora1400"
-                                            name="horarioAgendamento"
-                                            value="14:00"
-                                            checked={horarioAgendamento === '14:00'}
-                                            onChange={(e) => setHorarioAgendamento(e.target.value)}
-                                            className={styles.radioInput}
-                                        />
-                                        <label htmlFor="hora1400" className={styles.radioLabel}>14:00</label>
-
-                                        <input
-                                            type="radio"
-                                            id="hora1600"
-                                            name="horarioAgendamento"
-                                            value="16:00"
-                                            checked={horarioAgendamento === '16:00'}
-                                            onChange={(e) => setHorarioAgendamento(e.target.value)}
-                                            className={styles.radioInput}
-                                        />
-                                        <label htmlFor="hora1600" className={styles.radioLabel}>16:00</label>
+                                        {errors.nomeCompleto && <span className={styles.error}>{errors.nomeCompleto}</span>}
                                     </div>
-                                    {errors.horarioAgendamento && <span className={styles.error}>{errors.horarioAgendamento}</span>}
                                 </div>
 
                                 <div className={styles.inputContainer}>
-                                    <label htmlFor="servico" className={styles.label}>Escolher serviço</label>
-                                    <select
-                                        id="servico"
-                                        name="servico"
-                                        value={servico}
-                                        onChange={handleSelectChange}
-                                        className={styles.dropbtn}
-                                    >
-                                        <option value="">Selecione um serviço</option>
-                                        <option value="Cabelo">Cabelo</option>
-                                        <option value="Barba">Barba</option>
-                                        <option value="Domiciliar">Domiciliar</option>
-                                    </select>
-                                    {errors.servico && <span className={styles.error}>{errors.servico}</span>}
+                                    <div className={styles.container_conteudo}>
+                                        <label htmlFor="dataAgendamento" className={styles.label}>Data de agendamento:</label>
+                                        <input
+                                            type="date"
+                                            id="dataAgendamento"
+                                            name="dataAgendamento"
+                                            value={dataAgendamento}
+                                            onChange={(e) => setDataAgendamento(e.target.value)}
+                                            className={styles.dropbtn}
+                                        />
+                                        {errors.dataAgendamento && <span className={styles.error}>{errors.dataAgendamento}</span>}
+                                    </div>
                                 </div>
 
                                 <div className={styles.inputContainer}>
-                                    <label htmlFor="telefone" className={styles.label}>Telefone:</label>
-                                    <InputMask
-                                        mask="(99) 9 9999-9999"
-                                        value={telefone}
-                                        onChange={(e) => setTelefone(e.target.value)}
-                                    >
-                                        {() => <input type="tel" id="telefone" name="telefone" className={styles.inputTelefone} />}
-                                    </InputMask>
-                                    {errors.telefone && <span className={styles.error}>{errors.telefone}</span>}
+                                    <div className={styles.container_conteudo}>
+                                        <label className={styles.label}>Escolha o horário:</label>
+                                        <div className={styles.radioGroup}>
+                                            <input
+                                                type="radio"
+                                                id="hora0900"
+                                                name="horarioAgendamento"
+                                                value="09:00"
+                                                checked={horarioAgendamento === '09:00'}
+                                                onChange={(e) => setHorarioAgendamento(e.target.value)}
+                                                className={styles.radioInput}
+                                            />
+                                            <label htmlFor="hora0900" className={styles.radioLabel}>09:00</label>
+
+                                            <input
+                                                type="radio"
+                                                id="hora1100"
+                                                name="horarioAgendamento"
+                                                value="11:00"
+                                                checked={horarioAgendamento === '11:00'}
+                                                onChange={(e) => setHorarioAgendamento(e.target.value)}
+                                                className={styles.radioInput}
+                                            />
+                                            <label htmlFor="hora1100" className={styles.radioLabel}>11:00</label>
+
+                                            <input
+                                                type="radio"
+                                                id="hora1400"
+                                                name="horarioAgendamento"
+                                                value="14:00"
+                                                checked={horarioAgendamento === '14:00'}
+                                                onChange={(e) => setHorarioAgendamento(e.target.value)}
+                                                className={styles.radioInput}
+                                            />
+                                            <label htmlFor="hora1400" className={styles.radioLabel}>14:00</label>
+
+                                            <input
+                                                type="radio"
+                                                id="hora1600"
+                                                name="horarioAgendamento"
+                                                value="16:00"
+                                                checked={horarioAgendamento === '16:00'}
+                                                onChange={(e) => setHorarioAgendamento(e.target.value)}
+                                                className={styles.radioInput}
+                                            />
+                                            <label htmlFor="hora1600" className={styles.radioLabel}>16:00</label>
+                                        </div>
+                                        {errors.horarioAgendamento && <span className={styles.error}>{errors.horarioAgendamento}</span>}
+                                    </div>
+                                </div>
+
+                                <div className={styles.inputContainer}>
+                                    <div className={styles.container_conteudo}>
+                                        <label htmlFor="servico" className={styles.label}>Escolher serviço</label>
+                                        <select
+                                            id="servico"
+                                            name="servico"
+                                            value={servico}
+                                            onChange={handleSelectChange}
+                                            className={styles.dropbtn}
+                                        >
+                                            <option value="">Selecione um serviço</option>
+                                            <option value="Cabelo">Cabelo</option>
+                                            <option value="Barba">Barba</option>
+                                            <option value="Domiciliar">Domiciliar</option>
+                                        </select>
+                                        {errors.servico && <span className={styles.error}>{errors.servico}</span>}
+                                    </div>
+                                </div>
+
+                                <div className={styles.inputContainer}>
+                                    <div className={styles.container_conteudo}>
+                                        <label htmlFor="telefone" className={styles.label}>Telefone:</label>
+                                        <InputMask
+                                            mask="(99) 9 9999-9999"
+                                            value={telefone}
+                                            onChange={(e) => setTelefone(e.target.value)}
+                                        >
+                                            {() => <input type="tel" id="telefone" name="telefone" className={styles.inputTelefone} />}
+                                        </InputMask>
+                                        {errors.telefone && <span className={styles.error}>{errors.telefone}</span>}
+                                    </div>
                                 </div>
 
                                 <div className={styles.containerButton}>
