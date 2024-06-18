@@ -9,7 +9,7 @@ export default function Navbar() {
     const router = useRouter();
     return (
         <div className={styles.welcome_container}>
-            <div>
+            <div className={styles.welcome_container_text}>
                 <div className={styles.sub_title}>
                     <h3>AQUI NOSSOS CLIENTES TEM ATENDIMENTO DE QUALIDADE</h3>
                 </div>
@@ -33,7 +33,13 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div className={styles.image_container}>
-                    <div className={styles.imagem}></div>
+                    <Image
+                        src="/images/welcome_barbeiro.png"
+                        alt="barbeiro"
+                        width={450}
+                        height={350}
+                        className={`${styles.image}  ${styles.rounded_image}`}
+                    />
                 </div>
             </div>
         </div>

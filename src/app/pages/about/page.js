@@ -11,7 +11,7 @@ export default function About() {
             <div className={styles.services_container}>
                 <div className={styles.services}>
                     <div className={styles.text_box}>
-                        <h3>BARBA</h3>
+                        {/* <h3>BARBA</h3> */}
                         <Image className={styles.imagem} src={`/images/barba.png`} width="400" height="400" />
                     </div>
                     <p>Na DN Barber Shop, oferecemos cortes de barba personalizados para cada cliente. Nossos barbeiros especializados garantem um estilo impecável. </p>
@@ -22,7 +22,7 @@ export default function About() {
                 </div>
                 <div className={styles.services}>
                     <Image className={styles.imagem} src={`/images/completo.png`} width="400" height="400" />
-                    <p>Experimente o nosso pacote completo, onde você pode desfrutar de cortes de cabelo, tratamentos de barba e contornos de sobrancelha, tudo em um só lugar.</p>
+                    <p>Experimente o nosso pacote completo , onde você pode desfrutar de cortes de cabelo, tratamentos de barba e contornos de sobrancelha, tudo em um só lugar.</p>
                 </div>
                 <div className={styles.services}>
                     <Image className={styles.imagem} src={`/images/domiciliar.png`} width="400" height="400" />

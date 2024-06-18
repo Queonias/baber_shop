@@ -10,6 +10,15 @@
     height: 70vh;
 }
 
+.inf {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
 .user_icon_button {
     display: flex;
     justify-content: center;
@@ -97,16 +106,18 @@
         margin-left: 0;
         margin-top: 20px;
     }
+
+    .inf {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1em;
+    }
 }
 
-.inf {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 1em;
-}
+
 
 .left_container,
 .right_container {
@@ -116,6 +127,7 @@
     margin-bottom: 20px;
     padding: 20px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .imagem_container_2,
@@ -159,12 +171,14 @@
     margin-top: 20px;
     line-height: 1.5;
     width: 100%;
+    font-size: 1.5em;
 }
 
 .welcome h2 {
     font-size: 20px;
     margin-bottom: 0px;
     text-align: center;
+    font-size: 0.7em;
 }
 
 .welcome button {
@@ -191,6 +205,8 @@
 
 .titulo {
     margin: auto;
+    margin-bottom: 30px;
+    font-size: 1.5em;
 }
 
 .titulo_2 {
@@ -236,7 +252,7 @@
     }
 
     .welcome h2 {
-        font-size: 18px;
+        font-size: 1em;
     }
 
     .welcome button {
