@@ -227,6 +227,49 @@ tbody .next-month {
     cursor: pointer;
 }
 
+.isClient {
+    background-color: #6ea3b8
+}
+
+.infClient {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.clientContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.clientesDoMes {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+
+}
+
+.clientesDoDiaContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .divHeader header {

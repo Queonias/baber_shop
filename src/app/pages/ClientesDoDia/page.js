@@ -40,21 +40,24 @@ const EditarHorarios = () => {
             for (let j = 0; j < 7; j++) {
                 if (i === 0 && j < firstDay) {
                     week.push({
+                        date: new Date(year, month, day),
                         type: 'prev-month',
                         day: lastDateOfLastMonth - firstDay + j + 1
                     });
                 } else if (day > lastDateOfMonth) {
                     week.push({
+                        date: new Date(year, month, day),
                         type: 'next-month',
                         day: nextMonthDay++
                     });
                 } else {
                     week.push({
+                        date: new Date(year, month, day),
                         type: 'current-month',
                         day: day,
                         isSelected: day === selectedDate.getDate() &&
                             month === selectedDate.getMonth() &&
-                            year === selectedDate.getFullYear()
+                            year === selectedDate.getFullYear(),
                     });
                     day++;
                 }
@@ -69,7 +72,14 @@ const EditarHorarios = () => {
             const querySnapshot = await getDocs(collection(db, "agendamentos"));
             const documents = [];
             querySnapshot.forEach((doc) => {
-                documents.push({ id: doc.id, ...doc.data() });
+                const data = doc.data();
+                const date = new Date(data.dataAgendamento);
+                documents.push({
+                    id: doc.id,
+                    date,
+                    mes: date.getMonth() + 1,
+                    ...data
+                });
             });
             return documents;
         } catch (error) {
@@ -80,11 +90,9 @@ const EditarHorarios = () => {
 
     useEffect(() => {
         if (clientesDoDia.length > 0) {
-            const days = clientesDoDia[0].filter(cliente => cliente.data.getDate() === selectedDay);
+            const days = clientesDoDia.filter(cliente => cliente.date.getDate() === selectedDay);
             setDayClients(days);
         }
-        // console.log(clientesDoDia[0].map((days) => days.data.getMonth));
-        console.log(clientesDoDia[0]);
     }, [selectedDay]);
 
     useEffect(() => {
@@ -104,23 +112,17 @@ const EditarHorarios = () => {
 
     useEffect(() => {
         renderCalendar(currentDate);
-        const clientes = [];
         getAllDocuments().then(docs => {
             docs = docs.map(doc => {
-                const dataAgendamento = doc.dataAgendamento;
-                const date = new Date(dataAgendamento);
                 return {
                     ...doc,
-                    data: date,
-                    mes: date.getMonth() + 1
                 };
 
             });
-            clientes.push(docs);
+            setClientesDoDia(docs);
         }).catch(error => {
             console.error("Error: ", error);
         });
-        setClientesDoDia(clientes);
     }, [currentDate]);
 
     if (loading) {
@@ -152,6 +154,21 @@ const EditarHorarios = () => {
             window.location.href = '#logout'; // Ajuste o href conforme necessário
         }
     };
+
+    const teste = () => {
+        const arr = [];
+        for (let i = 0; i < 1000; i++) {
+            arr.push({
+                id: i,
+                nomeCompleto: `Cliente ${i}`,
+                horarioAgendamento: '10:00',
+                telefone: '11999999999',
+                data: '2022-01-01',
+                mes: 1
+            });
+        }
+        return arr;
+    }
 
     return (
         <div className={styles.divBody}>
@@ -198,13 +215,11 @@ const EditarHorarios = () => {
                                     <tr key={weekIndex}>
                                         {week.map((day, dayIndex) => (
                                             <td key={dayIndex}
-                                                className={styles[day.type] + (day.isSelected ? ` ${styles.selected}` : '')}
+                                                className={styles[day.type] + (day.isSelected ? ` ${styles.selected}` : '') + ((clientesDoDia.some(c => {
+                                                    return day.date.getDate() === c.date.getDate() && day.date.getMonth() === c.date.getMonth();
+                                                })) ? ` ${styles.isClient}` : '')}
                                                 onClick={() => day.type === 'current-month' && handleDayClick(day.day, currentDate.getMonth(), currentDate.getFullYear())}>
                                                 {day.day}
-                                                {/* {console.log(clientesDoDia.filter(days => days.data.getDate() === day.day))} */}
-                                                {/* {clientesDoDia[0].some((days) => days.data.getDate() === day.day)} */}
-                                                {/* {console.log(clientesDoDia[0].map((days) => days.data.getMonth))} */}
-                                                {/* {+ ((clientesDoDia[0].some((days) => days.data.getDate() === day.day)) ? ` ${styles.hasClients}` : '')} */}
                                             </td>
                                         ))}
                                     </tr>
@@ -214,11 +229,31 @@ const EditarHorarios = () => {
                     </div>
 
                 </main>
-                <div>
-                    <h2>Clientes do dia {selectedDay}</h2>
-                    {dayClients.map((cliente, index) => (
-                        <Card key={index} client={cliente} />
-                    ))}
+                <div className={styles.infClient}>
+
+                    <div className={styles.clientesDoDiaContainer}>
+                        <h2>Clientes do dia {selectedDay}</h2>
+                        <div>
+                            <div className={styles.clientContainer}>
+                                {dayClients.map((cliente, index) => (
+                                    <Card key={index} client={cliente} />
+                                ))}
+                                {/* {teste().map((cliente, index) => (
+                                <Card key={index} client={cliente} />
+                            ))} */}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.clientesDoDiaContainer}>
+                        <h2>Clientes de {monthNames[currentDate.getMonth()]}</h2>
+                        <div className={styles.clientContainer}>
+                            {clientesDoDia.map((cliente, index) => (
+                                <Card key={index} client={cliente} />
+                            ))}
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -412,6 +412,8 @@
     /* background-color: aquamarine; */
 }
 
+
+
 @media (max-width: 768px) {
     .link_items {
         display: none;
